@@ -17,7 +17,7 @@ Example of NodeJS rest-api(ExpressJS, Knex) for authentication user with JWT.
 * <a href="https://github.com/expressjs/express">expressJS</a>
 * <a href="https://github.com/auth0/express-jwt">express-jwt</a>
 * <a href="https://github.com/auth0/node-jsonwebtoken">jsonwebtoken</a>
-* <a href="https://github.com/jaredhanson/passport">passport</a>https://github.com/sideway/joi
+* <a href="https://github.com/jaredhanson/passport">passport</a>
 * <a href="https://github.com/sideway/joi">joi</a>
 * <a href="https://github.com/knex/knex">knex</a>
 * <a href="https://github.com/winstonjs/winston">Winston</a>
