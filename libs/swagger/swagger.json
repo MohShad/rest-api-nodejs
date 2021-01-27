@@ -1,0 +1,194 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation.",
+		"version": "1.0.0",
+		"title": "Authentication JWT",
+		"contact": {
+			"email": "mohammad.shadnik@gmail.com"
+		}
+	},
+	"host": "localhost:4000",
+	"basePath": "/api",
+	"tags": [
+		{
+			"name": "Authentication",
+			"description": "Authorization operations"
+		}
+	],
+	"schemes": [
+		"http"
+	],
+	"paths": {
+		"/signup": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Create a new user.",
+				"description": "",
+				"operationId": "authentication-signup",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "User object that must be sent when creating the account.",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/SignupRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Operation performed successfully"
+					},
+					"400": {
+						"description": "Bad Request - Object sent on request is invalid"
+					}
+				}
+			}
+		},
+		"/login": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "User authentication.",
+				"description": "",
+				"operationId": "authentication-login",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "User object that must be sent when creating the account.",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginRequest"
+						}
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Invalid input"
+					}
+				}
+			}
+		},
+		"/logout": {
+			"get": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Remove user authentication.",
+				"description": "",
+				"operationId": "authentication-logout",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"405": {
+						"description": "Invalid input"
+					}
+				}
+			}
+		},
+		"/validToken": {
+			"get": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Validates an authentication token.",
+				"description": "",
+				"operationId": "authentication-validToken",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions"
+						}
+					},
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "Pet not found"
+					}
+				},
+				"security": [
+					{
+						"Bearer": []
+					}
+				]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"petstore_auth": {
+			"type": "oauth2",
+			"authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+			"flow": "implicit",
+			"scopes": {
+				"write:pets": "modify pets in your account",
+				"read:pets": "read your pets"
+			}
+		},
+		"api_key": {
+			"type": "apiKey",
+			"name": "api_key",
+			"in": "header"
+		}
+	},
+	"definitions": {
+		"SignupRequest": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"cell_phone": {
+					"type": "string"
+				}
+			}
+		},
+		"LoginRequest": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}
